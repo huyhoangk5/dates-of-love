@@ -1,0 +1,22 @@
+{
+  "name": "Dates Of Love",
+  "short_name": "LoveDates",
+  "description": "Lịch kỷ niệm tình yêu - Đếm ngày bên nhau",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ff6f91",
+  "background_color": "#fff6f1",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
