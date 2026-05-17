@@ -52,53 +52,52 @@
 <body class="p-4 md:p-6">
 
 <div class="max-w-7xl mx-auto">
-  <!-- Header: 60% tên & biệt danh, 40% chọn ngày bắt đầu -->
+  <!-- Header: tên & biệt danh + chọn ngày bắt đầu (đã sửa responsive) -->
   <div class="glass-card rounded-3xl p-5 mb-6 shadow-xl">
-    <div class="flex flex-col lg:flex-row gap-5">
-      <!-- 60% - khu vực tên và biệt danh của hai người -->
-      <div class="lg:w-[60%]">
-        <div class="flex flex-wrap justify-center items-start gap-4 md:gap-8">
-          <!-- Người thứ nhất -->
-          <div class="flex-1 min-w-[140px]">
-            <label class="block text-xs font-bold text-rose-500 mb-1">Tên của bạn</label>
-            <input type="text" id="name1" placeholder="Tên chính thức" class="couple-name-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-800 shadow-sm">
-            <label class="block text-xs font-bold text-rose-400 mt-2 mb-1">Biệt danh</label>
-            <input type="text" id="nickname1" placeholder="Biệt danh (VD: Bảo bối)" class="nickname-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-600 shadow-sm">
-          </div>
-          <!-- Trái tim dây leo -->
-          <div class="vine-heart text-xl self-center my-2"><i data-lucide="heart" class="w-6 h-6 fill-current"></i></div>
-          <!-- Người thứ hai -->
-          <div class="flex-1 min-w-[140px]">
-            <label class="block text-xs font-bold text-rose-500 mb-1">Tên người yêu</label>
-            <input type="text" id="name2" placeholder="Tên chính thức" class="couple-name-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-800 shadow-sm">
-            <label class="block text-xs font-bold text-rose-400 mt-2 mb-1">Biệt danh</label>
-            <input type="text" id="nickname2" placeholder="Biệt danh (VD: Mèo con)" class="nickname-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-600 shadow-sm">
-          </div>
+    <!-- Bố cục chính dạng cột trên mobile, hàng ngang trên desktop -->
+    <div class="flex flex-col gap-6">
+      
+      <!-- Khu vực tên và biệt danh (responsive: trên mobile thành 3 dọc) -->
+      <div class="flex flex-col md:flex-row justify-center items-stretch gap-6 md:gap-8">
+        <!-- Người thứ nhất (tên + biệt danh) -->
+        <div class="flex-1 bg-white/40 rounded-2xl p-3 shadow-inner">
+          <label class="block text-xs font-bold text-rose-500 mb-1">Tên của bạn</label>
+          <input type="text" id="name1" placeholder="Tên chính thức" class="couple-name-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-800 shadow-sm">
+          <label class="block text-xs font-bold text-rose-400 mt-2 mb-1">Biệt danh</label>
+          <input type="text" id="nickname1" placeholder="Biệt danh (VD: Bảo bối)" class="nickname-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-600 shadow-sm">
+        </div>
+
+        <!-- Trái tim dây leo (nằm giữa 2 cột trên desktop, ở giữa 3 phần trên mobile) -->
+        <div class="vine-heart text-xl self-center justify-self-center">
+          <i data-lucide="heart" class="w-6 h-6 fill-current"></i>
+        </div>
+
+        <!-- Người thứ hai (tên + biệt danh) -->
+        <div class="flex-1 bg-white/40 rounded-2xl p-3 shadow-inner">
+          <label class="block text-xs font-bold text-rose-500 mb-1">Tên người yêu</label>
+          <input type="text" id="name2" placeholder="Tên chính thức" class="couple-name-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-800 shadow-sm">
+          <label class="block text-xs font-bold text-rose-400 mt-2 mb-1">Biệt danh</label>
+          <input type="text" id="nickname2" placeholder="Biệt danh (VD: Mèo con)" class="nickname-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-600 shadow-sm">
         </div>
       </div>
-      
-      <!-- 40% - chọn ngày bắt đầu bằng 3 dropdown -->
-      <div class="lg:w-[40%] flex flex-col items-center gap-2">
+
+      <!-- Ngày bắt đầu yêu (giữ nguyên) -->
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2 border-t border-white/40">
         <div class="flex items-center gap-2 text-rose-800 font-bold">
           <i data-lucide="calendar" class="w-5 h-5"></i>
           <span>Ngày bắt đầu yêu:</span>
         </div>
         <div class="flex gap-3 justify-center flex-wrap">
-          <select id="startDay" class="rounded-xl px-4 py-2 font-bold text-rose-800 cursor-pointer w-24 text-center">
-            <option value="">Ngày</option>
-          </select>
-          <select id="startMonth" class="rounded-xl px-4 py-2 font-bold text-rose-800 cursor-pointer w-28 text-center">
-            <option value="">Tháng</option>
-          </select>
-          <select id="startYear" class="rounded-xl px-4 py-2 font-bold text-rose-800 cursor-pointer w-32 text-center">
-            <option value="">Năm</option>
-          </select>
+          <select id="startDay" class="rounded-xl px-4 py-2 font-bold text-rose-800 cursor-pointer w-24 text-center"><option value="">Ngày</option></select>
+          <select id="startMonth" class="rounded-xl px-4 py-2 font-bold text-rose-800 cursor-pointer w-28 text-center"><option value="">Tháng</option></select>
+          <select id="startYear" class="rounded-xl px-4 py-2 font-bold text-rose-800 cursor-pointer w-32 text-center"><option value="">Năm</option></select>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- 2 cột chính -->
+  <!-- 2 cột chính (giữ nguyên) -->
   <div class="grid lg:grid-cols-[1fr_1.4fr] gap-6">
     <!-- Cột trái -->
     <div class="space-y-6">
@@ -148,7 +147,7 @@
   <footer class="text-center text-rose-500 font-bold mt-6 text-sm">Mỗi ngày trên lịch là một mảnh ghép nhỏ trong câu chuyện của hai bạn 💖</footer>
 </div>
 
-<!-- Modal Thêm / Sửa kỷ niệm (dùng dropdown ngày/tháng/năm) -->
+<!-- Modal Thêm / Sửa kỷ niệm (giữ nguyên) -->
 <div id="eventModal" class="fixed inset-0 modal-backdrop hidden items-center justify-center z-50">
   <div class="bg-white rounded-3xl p-6 max-w-md w-full mx-4 shadow-2xl">
     <div class="flex justify-between items-center mb-4">
@@ -205,7 +204,6 @@
       let currentMonth = new Date();
       let selectedDateKey = null;
 
-      // Helper
       function toKey(date) { return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; }
       function parseKey(key) { let p = key.split('-'); return new Date(p[0], p[1]-1, p[2]); }
       function formatDate(d) { return d.toLocaleDateString('vi-VN'); }
@@ -218,7 +216,6 @@
         localStorage.setItem('loveEvents', JSON.stringify(events));
       }
 
-      // Cập nhật tên và biệt danh
       function updateNames() {
         document.getElementById('name1').value = name1;
         document.getElementById('name2').value = name2;
@@ -230,7 +227,7 @@
       document.getElementById('nickname1').addEventListener('change', (e) => { nickname1 = e.target.value; saveAll(); });
       document.getElementById('nickname2').addEventListener('change', (e) => { nickname2 = e.target.value; saveAll(); });
 
-      // ---------- Hàm tạo dropdown chung ----------
+      // ---------- Hàm tạo dropdown ----------
       function populateDays(selectEl, month, year, keepValue = true) {
         let oldValue = keepValue ? selectEl.value : '';
         if (!month || !year) {
@@ -244,15 +241,10 @@
         selectEl.innerHTML = html;
         if (keepValue && oldValue && !isNaN(oldValue)) {
           let dayNum = parseInt(oldValue);
-          if (dayNum >= 1 && dayNum <= daysInMonth) {
-            selectEl.value = dayNum;
-          } else {
-            // Nếu ngày cũ không hợp lệ, chọn ngày cuối tháng
-            selectEl.value = daysInMonth;
-          }
+          if (dayNum >= 1 && dayNum <= daysInMonth) selectEl.value = dayNum;
+          else selectEl.value = daysInMonth;
         }
       }
-
       function populateMonths(selectEl) {
         let html = '<option value="">Tháng</option>';
         for (let i = 1; i <= 12; i++) html += `<option value="${i}">Tháng ${i}</option>`;
@@ -265,11 +257,10 @@
         selectEl.innerHTML = html;
       }
 
-      // ---------- Xử lý dropdown cho loveStart ----------
+      // ---------- loveStart dropdowns ----------
       const startDaySelect = document.getElementById('startDay');
       const startMonthSelect = document.getElementById('startMonth');
       const startYearSelect = document.getElementById('startYear');
-
       populateMonths(startMonthSelect);
       populateYears(startYearSelect);
 
@@ -287,7 +278,6 @@
         }
       }
 
-      // Hàm cập nhật loveStart từ dropdown, lưu và làm mới
       function updateLoveStart() {
         let day = parseInt(startDaySelect.value);
         let month = parseInt(startMonthSelect.value);
@@ -302,11 +292,10 @@
               refreshAll();
             }
           } else {
-            // Nếu không hợp lệ (ví dụ 31/2), tự động sửa thành ngày cuối tháng
             let lastDay = new Date(year, month, 0).getDate();
             startDaySelect.value = lastDay;
             day = lastDay;
-            newLoveStart = `${year}-${String(month).padStart(2,'0')}-${String(lastDay).padStart(2,'0')}`;
+            let newLoveStart = `${year}-${String(month).padStart(2,'0')}-${String(lastDay).padStart(2,'0')}`;
             if (newLoveStart !== loveStart) {
               loveStart = newLoveStart;
               saveAll();
@@ -320,63 +309,49 @@
         let month = parseInt(startMonthSelect.value);
         let year = parseInt(startYearSelect.value);
         if (month && year) {
-          // Lưu giá trị ngày hiện tại (nếu có)
-          let oldDay = startDaySelect.value;
-          populateDays(startDaySelect, month, year, true); // true: giữ giá trị cũ nếu hợp lệ
-          // Nếu oldDay không hợp lệ, populateDays đã tự động set thành ngày cuối tháng
+          populateDays(startDaySelect, month, year, true);
         } else {
           startDaySelect.innerHTML = '<option value="">Ngày</option>';
         }
         updateLoveStart();
       }
-
       function onStartYearChange() {
         let year = parseInt(startYearSelect.value);
         let month = parseInt(startMonthSelect.value);
         if (month && year) {
-          let oldDay = startDaySelect.value;
           populateDays(startDaySelect, month, year, true);
         } else if (year && !month) {
           startDaySelect.innerHTML = '<option value="">Ngày</option>';
         }
         updateLoveStart();
       }
-
       startMonthSelect.addEventListener('change', onStartMonthChange);
       startYearSelect.addEventListener('change', onStartYearChange);
       startDaySelect.addEventListener('change', updateLoveStart);
 
-      // ---------- Xử lý dropdown cho ngày kỷ niệm trong modal ----------
+      // ---------- event modal dropdowns ----------
       const eventDaySelect = document.getElementById('eventDay');
       const eventMonthSelect = document.getElementById('eventMonth');
       const eventYearSelect = document.getElementById('eventYear');
-
       populateMonths(eventMonthSelect);
       populateYears(eventYearSelect, 1900);
 
       function onEventMonthChange() {
         let month = parseInt(eventMonthSelect.value);
         let year = parseInt(eventYearSelect.value);
-        if (month && year) {
-          populateDays(eventDaySelect, month, year, true);
-        } else {
-          eventDaySelect.innerHTML = '<option value="">Ngày</option>';
-        }
+        if (month && year) populateDays(eventDaySelect, month, year, true);
+        else eventDaySelect.innerHTML = '<option value="">Ngày</option>';
       }
       function onEventYearChange() {
         let year = parseInt(eventYearSelect.value);
         let month = parseInt(eventMonthSelect.value);
-        if (month && year) {
-          populateDays(eventDaySelect, month, year, true);
-        } else if (year && !month) {
-          eventDaySelect.innerHTML = '<option value="">Ngày</option>';
-        }
+        if (month && year) populateDays(eventDaySelect, month, year, true);
+        else if (year && !month) eventDaySelect.innerHTML = '<option value="">Ngày</option>';
       }
       eventMonthSelect.addEventListener('change', onEventMonthChange);
       eventYearSelect.addEventListener('change', onEventYearChange);
-      // Không cần lắng nghe eventDaySelect vì không cần tự động cập nhật gì thêm
 
-      // ---------- Cập nhật bộ đếm ----------
+      // ---------- Bộ đếm ----------
       function updateCounter() {
         if (!loveStart) return;
         let start = parseKey(loveStart);
@@ -397,7 +372,7 @@
         document.getElementById('totalDays').innerText = `🎈 Tổng cộng: ${diffDays.toLocaleString()} ngày yêu nhau`;
       }
 
-      // Logic sự kiện (giữ nguyên)
+      // ---------- Sự kiện ----------
       function occursOn(event, date) {
         let base = parseKey(event.date);
         if (event.repeat === 'monthly') return base.getDate() === date.getDate();
@@ -405,7 +380,6 @@
         return toKey(base) === toKey(date);
       }
       function eventsOnDate(date) { return events.filter(e => occursOn(e, date)); }
-
       function nextOccurrence(event) {
         let today = new Date(); today.setHours(0,0,0,0);
         let base = parseKey(event.date);
@@ -420,7 +394,6 @@
         if (cand < today) cand = new Date(today.getFullYear()+1, base.getMonth(), base.getDate());
         return cand;
       }
-
       function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m; }); }
 
       function renderUpcoming() {
@@ -481,7 +454,6 @@
         let grid = document.getElementById('calendarGrid');
         grid.innerHTML = '';
         let todayKey = toKey(new Date());
-
         for (let i = 0; i < 42; i++) {
           let dayNum, date, inMonth = true;
           if (i < firstDay) {
@@ -516,7 +488,7 @@
         else panel.innerHTML = `<div class="bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-xl p-4"><div class="font-black">✨ ${formatDate(date)}</div>${dayEvents.map(e=>`<div class="mt-2 bg-white/20 rounded-lg p-2"><div class="font-bold">${escapeHtml(e.name)}</div><div class="text-xs">${e.repeat==='monthly'?'Lặp tháng':e.repeat==='yearly'?'Lặp năm':'Một lần'}</div></div>`).join('')}</div>`;
       }
 
-      // Modal thêm/sửa
+      // Modal
       const modal = document.getElementById('eventModal');
       function resetEventModal() {
         document.getElementById('editId').value = '';
@@ -531,7 +503,6 @@
         eventDaySelect.value = day;
         document.getElementById('repeatType').value = 'none';
       }
-
       function setEventDateSelectors(dateStr) {
         if (dateStr) {
           let [year, month, day] = dateStr.split('-').map(Number);
@@ -539,11 +510,8 @@
           eventMonthSelect.value = month;
           populateDays(eventDaySelect, month, year, false);
           eventDaySelect.value = day;
-        } else {
-          resetEventModal();
-        }
+        } else resetEventModal();
       }
-
       function getEventDateFromSelectors() {
         let day = parseInt(eventDaySelect.value);
         let month = parseInt(eventMonthSelect.value);
@@ -553,7 +521,6 @@
           if (testDate.getFullYear() === year && testDate.getMonth() === month-1 && testDate.getDate() === day) {
             return `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
           } else {
-            // Sửa ngày về cuối tháng
             let lastDay = new Date(year, month, 0).getDate();
             eventDaySelect.value = lastDay;
             return `${year}-${String(month).padStart(2,'0')}-${String(lastDay).padStart(2,'0')}`;
@@ -561,7 +528,6 @@
         }
         return null;
       }
-
       function openAddModal() {
         document.getElementById('modalTitle').innerText = '✨ Thêm kỷ niệm';
         resetEventModal();
@@ -576,17 +542,13 @@
         modal.classList.remove('hidden'); modal.classList.add('flex');
       }
       function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); }
-
       document.getElementById('eventForm').addEventListener('submit', (e) => {
         e.preventDefault();
         let id = document.getElementById('editId').value;
         let name = document.getElementById('eventName').value.trim();
         let date = getEventDateFromSelectors();
         let repeat = document.getElementById('repeatType').value;
-        if (!name || !date) {
-          alert('Vui lòng nhập đầy đủ tên và ngày kỷ niệm');
-          return;
-        }
+        if (!name || !date) { alert('Vui lòng nhập đầy đủ tên và ngày kỷ niệm'); return; }
         if (id) {
           let index = events.findIndex(ev => ev.id === id);
           if (index !== -1) events[index] = { ...events[index], name, date, repeat };
@@ -608,7 +570,7 @@
         else document.getElementById('selectedPanel').innerHTML = '📌 Chọn một ngày trên lịch để xem chi tiết';
       }
 
-      // Nút điều hướng
+      // Điều hướng
       document.getElementById('prevMonth').addEventListener('click', () => { currentMonth.setMonth(currentMonth.getMonth()-1); renderCalendar(); });
       document.getElementById('nextMonth').addEventListener('click', () => { currentMonth.setMonth(currentMonth.getMonth()+1); renderCalendar(); });
       document.getElementById('todayBtn').addEventListener('click', () => { currentMonth = new Date(); selectedDateKey = toKey(new Date()); renderCalendar(); showSelectedDay(new Date()); });

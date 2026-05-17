@@ -2,7 +2,7 @@
   "name": "Dates Of Love",
   "short_name": "LoveDates",
   "description": "Lịch kỷ niệm tình yêu - Đếm ngày bên nhau",
-  "start_url": "/",
+  "start_url": "/dates-of-love/",
   "display": "standalone",
   "theme_color": "#ff6f91",
   "background_color": "#fff6f1",

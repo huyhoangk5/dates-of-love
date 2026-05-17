@@ -4,22 +4,7 @@
       <stop offset="0%" stop-color="#ff8aa8"/>
       <stop offset="100%" stop-color="#b83a5a"/>
     </radialGradient>
-    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff0f3"/>
-      <stop offset="100%" stop-color="#ffe0e5"/>
-    </linearGradient>
   </defs>
-  <!-- Nền bo tròn, gradient hồng đỏ -->
   <rect width="512" height="512" rx="120" fill="url(#bgGrad)"/>
-  <!-- Dải ruy băng tạo chữ L cách điệu -->
-  <path d="M140 140 C140 120 160 110 180 110 L320 110 C340 110 360 130 360 150 L360 170 C360 190 340 200 320 200 L240 200 L240 380 C240 400 220 420 200 420 C180 420 160 400 160 380 L160 200 L140 200 C120 200 100 180 100 160 L100 140 C100 120 120 110 140 110Z" fill="white" opacity="0.95"/>
-  <!-- Trái tim nhỏ trên đầu chữ L (điểm nhấn tình yêu) -->
-  <path d="M280 140 C280 120 310 100 320 110 C330 100 360 120 360 140 C360 160 320 190 320 190 C320 190 280 160 280 140Z" fill="#ff6f91"/>
-  <!-- Các chấm bi trang trí -->
-  <circle cx="140" cy="140" r="8" fill="#ff6f91"/>
-  <circle cx="360" cy="170" r="6" fill="#ff6f91"/>
-  <circle cx="200" cy="420" r="6" fill="#ff6f91"/>
-  <!-- Hai trái tim nhỏ xung quanh -->
-  <path d="M90 380 C90 365 105 355 110 360 C115 355 130 365 130 380 C130 395 110 410 110 410 C110 410 90 395 90 380Z" fill="white" opacity="0.6"/>
-  <path d="M400 340 C400 325 415 315 420 320 C425 315 440 325 440 340 C440 355 420 370 420 370 C420 370 400 355 400 340Z" fill="white" opacity="0.6"/>
+  <path d="M256 380 C256 380 160 300 160 230 C160 190 190 160 220 160 C240 160 250 170 256 185 C262 170 272 160 292 160 C322 160 352 190 352 230 C352 300 256 380 256 380Z" fill="white"/>
 </svg>
