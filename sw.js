@@ -1,4 +1,4 @@
-const CACHE_NAME = 'love-dates-v3';
+const CACHE_NAME = 'love-dates-v4';
 const BASE_PATH = '/dates-of-love/';
 
 const urlsToCache = [
@@ -31,26 +31,23 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Xử lý request thông minh, chống 404 khi khởi chạy App độc lập
+// Bước 3: Chiến lược Network-First giúp luôn cập nhật bản mới nhất khi có mạng
 self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-  
-  // Nếu là yêu cầu điều hướng trang (Mở app, tải lại trang)
-  if (event.request.mode === 'navigate' || url.origin === self.location.origin) {
-    event.respondWith(
-      fetch(event.request)
-        .catch(() => {
-          // Nếu lỗi mạng hoặc không tìm thấy, trả về ngay tài nguyên index từ Cache gốc
-          return caches.match(`${BASE_PATH}index.html`) || caches.match(BASE_PATH);
-        })
-    );
-    return;
-  }
-
-  // Đối với asset khác (CSS, JS từ CDN, font), tìm trong bộ nhớ Cache trước
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then(response => {
+        // Nếu lấy dữ liệu từ mạng thành công, bỏ vào cache bản mới nhất rồi trả về
+        if (response.status === 200) {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return response;
+      })
+      .catch(() => {
+        // Nếu mất mạng hoặc mạng lỗi, lập tức lùi về lấy file trong cache cũ ra dùng
+        return caches.match(event.request);
+      })
   );
 });
