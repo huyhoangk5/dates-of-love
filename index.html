@@ -22,7 +22,7 @@
     .vine-heart {
       position: relative; display: inline-flex; align-items: center; justify-content: center;
       background: #ff6f91; border-radius: 999px; padding: 8px 14px; color: white; font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); flex-shrink: 0;
     }
     .vine-heart::before, .vine-heart::after {
       content: "🌿"; position: absolute; font-size: 1.4rem; opacity: 0.7;
@@ -52,28 +52,22 @@
 <body class="p-4 md:p-6">
 
 <div class="max-w-7xl mx-auto">
-  <!-- Header: tên & biệt danh + chọn ngày bắt đầu (đã sửa responsive) -->
   <div class="glass-card rounded-3xl p-5 mb-6 shadow-xl">
-    <!-- Bố cục chính dạng cột trên mobile, hàng ngang trên desktop -->
     <div class="flex flex-col gap-6">
       
-      <!-- Khu vực tên và biệt danh (responsive: trên mobile thành 3 dọc) -->
-      <div class="flex flex-col md:flex-row justify-center items-stretch gap-6 md:gap-8">
-        <!-- Người thứ nhất (tên + biệt danh) -->
-        <div class="flex-1 bg-white/40 rounded-2xl p-3 shadow-inner">
+      <div class="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-6 md:gap-8 w-full">
+        <div class="w-full md:flex-1 bg-white/40 rounded-2xl p-4 shadow-inner">
           <label class="block text-xs font-bold text-rose-500 mb-1">Tên của bạn</label>
           <input type="text" id="name1" placeholder="Tên chính thức" class="couple-name-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-800 shadow-sm">
           <label class="block text-xs font-bold text-rose-400 mt-2 mb-1">Biệt danh</label>
           <input type="text" id="nickname1" placeholder="Biệt danh (VD: Bảo bối)" class="nickname-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-600 shadow-sm">
         </div>
 
-        <!-- Trái tim dây leo (nằm giữa 2 cột trên desktop, ở giữa 3 phần trên mobile) -->
-        <div class="vine-heart text-xl self-center justify-self-center">
+        <div class="vine-heart text-xl my-2 md:my-0 self-center">
           <i data-lucide="heart" class="w-6 h-6 fill-current"></i>
         </div>
 
-        <!-- Người thứ hai (tên + biệt danh) -->
-        <div class="flex-1 bg-white/40 rounded-2xl p-3 shadow-inner">
+        <div class="w-full md:flex-1 bg-white/40 rounded-2xl p-4 shadow-inner">
           <label class="block text-xs font-bold text-rose-500 mb-1">Tên người yêu</label>
           <input type="text" id="name2" placeholder="Tên chính thức" class="couple-name-input w-full bg-white/80 rounded-xl px-4 py-2 text-center font-bold text-rose-800 shadow-sm">
           <label class="block text-xs font-bold text-rose-400 mt-2 mb-1">Biệt danh</label>
@@ -81,8 +75,7 @@
         </div>
       </div>
 
-      <!-- Ngày bắt đầu yêu (giữ nguyên) -->
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2 border-t border-white/40">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-4 border-t border-white/40">
         <div class="flex items-center gap-2 text-rose-800 font-bold">
           <i data-lucide="calendar" class="w-5 h-5"></i>
           <span>Ngày bắt đầu yêu:</span>
@@ -97,9 +90,7 @@
     </div>
   </div>
 
-  <!-- 2 cột chính (giữ nguyên) -->
   <div class="grid lg:grid-cols-[1fr_1.4fr] gap-6">
-    <!-- Cột trái -->
     <div class="space-y-6">
       <div class="glass-card rounded-3xl p-5">
         <div class="flex justify-between items-center mb-4">
@@ -126,7 +117,6 @@
       </div>
     </div>
 
-    <!-- Cột phải: Lịch -->
     <div class="glass-card rounded-3xl p-5">
       <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
         <h2 class="font-title text-2xl font-bold text-rose-800">📆 Lịch kỷ niệm</h2>
@@ -147,7 +137,6 @@
   <footer class="text-center text-rose-500 font-bold mt-6 text-sm">Mỗi ngày trên lịch là một mảnh ghép nhỏ trong câu chuyện của hai bạn 💖</footer>
 </div>
 
-<!-- Modal Thêm / Sửa kỷ niệm (giữ nguyên) -->
 <div id="eventModal" class="fixed inset-0 modal-backdrop hidden items-center justify-center z-50">
   <div class="bg-white rounded-3xl p-6 max-w-md w-full mx-4 shadow-2xl">
     <div class="flex justify-between items-center mb-4">
@@ -158,7 +147,6 @@
       <input type="hidden" id="editId" value="">
       <input type="text" id="eventName" placeholder="Tên kỷ niệm (VD: Ngày đầu tiên)" required class="w-full border border-pink-200 rounded-xl p-3 mb-3 focus:outline-none focus:ring-2 focus:ring-pink-400">
       
-      <!-- 3 dropdown cho ngày kỷ niệm -->
       <div class="mb-4">
         <label class="block text-sm font-bold text-rose-700 mb-2">Ngày kỷ niệm</label>
         <div class="flex gap-2">
@@ -481,6 +469,7 @@
         }
       }
 
+      // Sửa đổi phương thức xử lý click/xem ngày chi tiết lịch
       function showSelectedDay(date) {
         let dayEvents = eventsOnDate(date);
         let panel = document.getElementById('selectedPanel');
@@ -578,7 +567,7 @@
       document.getElementById('closeModal').addEventListener('click', closeModal);
       document.getElementById('cancelModal').addEventListener('click', closeModal);
 
-      // Khởi tạo
+      // Khởi tạo ứng dụng ban đầu
       updateNames();
       setStartDateSelectors();
       refreshAll();

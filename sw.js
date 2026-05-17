@@ -1,7 +1,6 @@
-const CACHE_NAME = 'love-dates-v2';
+const CACHE_NAME = 'love-dates-v3';
 const BASE_PATH = '/dates-of-love/';
 
-// Những file cần lưu lại để dùng khi không có mạng
 const urlsToCache = [
   BASE_PATH,
   `${BASE_PATH}index.html`,
@@ -10,7 +9,6 @@ const urlsToCache = [
   'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@400;600;700;800&display=swap'
 ];
 
-// Bước 1: Cài đặt và lưu file vào bộ nhớ đệm (cache)
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -19,7 +17,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// Bước 2: Kích hoạt và xóa cache cũ
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -34,22 +31,23 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Bước 3: Quan trọng nhất - Xử lý mọi request từ app
+// Xử lý request thông minh, chống 404 khi khởi chạy App độc lập
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   
-  // Nếu yêu cầu là một trang (navigation request), ví dụ: mở app từ màn hình chính
-  if (event.request.mode === 'navigate') {
+  // Nếu là yêu cầu điều hướng trang (Mở app, tải lại trang)
+  if (event.request.mode === 'navigate' || url.origin === self.location.origin) {
     event.respondWith(
-      fetch(event.request).catch(() => {
-        // Nếu không có mạng, hãy trả về file index.html đã được lưu trong cache
-        return caches.match(`${BASE_PATH}index.html`);
-      })
+      fetch(event.request)
+        .catch(() => {
+          // Nếu lỗi mạng hoặc không tìm thấy, trả về ngay tài nguyên index từ Cache gốc
+          return caches.match(`${BASE_PATH}index.html`) || caches.match(BASE_PATH);
+        })
     );
     return;
   }
 
-  // Với các yêu cầu khác (ảnh, css, js...), hãy lấy từ cache trước
+  // Đối với asset khác (CSS, JS từ CDN, font), tìm trong bộ nhớ Cache trước
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request);
